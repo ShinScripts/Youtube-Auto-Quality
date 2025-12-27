@@ -28,18 +28,21 @@
         return (player && typeof player.getPlaybackQuality === 'function') ? player : null;
     }
 
+    function ParseQuality(quality) {
+        return `${QUALITY_MAP[quality] || quality}`
+    }
+
     function VerifyQuality(target, player, attempts = 0) {
         const current = player.getPlaybackQuality();
-
         if (current === target || current === 'highres') {
-            console.log(`YouTube Auto Quality: Verified! Quality is ${QUALITY_MAP[current] || current}.`);
+            console.log(`YouTube Auto Quality: Verified! Quality is ${ParseQuality(current)}.`);
             return;
         }
 
         if (attempts < 10) {
             setTimeout(() => VerifyQuality(target, player, attempts + 1), 500);
         } else {
-            console.log(`YouTube Auto Quality: Verification timed out. Current quality: ${QUALITY_MAP[current] || current}.`);
+            console.log(`YouTube Auto Quality: Verification timed out. Current quality: ${ParseQuality(current)}.`);
         }
     }
 
@@ -60,21 +63,20 @@
         const current = player.getPlaybackQuality();
         const bestOption = available.includes(targetQuality) ? targetQuality : available[0]; // youtube sorts from best to worst
 
-        if (current === "unknown" || !current) {
+        if (current === "unknown" || !current) { // sometimes current == unknown, catch it here
             setTimeout(SetVideoQuality, 500);
             return;
         }
 
         if (current === bestOption) {
-            console.log(`YouTube Auto Quality: Already at desired/best available quality: ${QUALITY_MAP[current] || current}.`);
+            console.log(`YouTube Auto Quality: Already at desired/best available quality: ${ParseQuality(current)}.`);
             return;
         }
 
-        console.log(`YouTube Auto Quality: Switching ${QUALITY_MAP[current] || current} -> ${QUALITY_MAP[bestOption] || bestOption}`);
+        console.log(`YouTube Auto Quality: Switching ${ParseQuality(current)} -> ${ParseQuality(bestOption)}`);
 
         player.setPlaybackQualityRange(bestOption, bestOption);
         player.setPlaybackQuality(bestOption);
-
         VerifyQuality(bestOption, player);
     }
 
