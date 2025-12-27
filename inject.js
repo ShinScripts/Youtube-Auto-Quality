@@ -84,10 +84,7 @@
 
         if (window.location.href.includes('/watch?v=') && newVideoId && newVideoId !== currentVideoId) {
             console.log(`YouTube Auto Quality: Detected navigation to new video ${newVideoId}. Resetting state.`);
-
             currentVideoId = newVideoId;
-            qualitySet = false;
-
             setTimeout(SetVideoQuality, 700);
         }
         else if (!window.location.href.includes('/watch?v=') && currentVideoId) {
