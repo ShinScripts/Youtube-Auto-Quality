@@ -3,6 +3,12 @@
     "name": "Youtube Auto Quality",
     "version": "1.0.0",
     "description": "Sets YouTube quality automatically.",
+    "permissions": [
+        "storage"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
             "matches": [

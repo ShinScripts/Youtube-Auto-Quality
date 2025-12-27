@@ -1,5 +1,4 @@
 (function () {
-    const TARGET_QUALITY = "hd1080";
     const QUALITY_MAP = {
         highres: "4320p",
         hd2880: "2880p",
@@ -12,9 +11,17 @@
         small: "240p",
         tiny: "144p",
     };
-
+    let targetQuality = "hd1080";
     let currentVideoId = null;
-    let qualitySet = false;
+
+    window.addEventListener('UpdateQuality', (e) => {
+        targetQuality = e.detail;
+        if (currentVideoId) {
+            SetVideoQuality();
+        } else {
+            HandleNewVideoLoad();
+        }
+    });
 
     function GetPlayer() {
         const player = document.getElementById('movie_player');
@@ -25,7 +32,7 @@
         const current = player.getPlaybackQuality();
 
         if (current === target || current === 'highres') {
-            console.log(`YouTube Auto Quality: Verified! Quality is ${QUALITY_MAP[current]}.`);
+            console.log(`YouTube Auto Quality: Verified! Quality is ${QUALITY_MAP[current] || current}.`);
             return;
         }
 
@@ -51,10 +58,15 @@
         }
 
         const current = player.getPlaybackQuality();
-        const bestOption = available.includes(TARGET_QUALITY) ? TARGET_QUALITY : available[0]; // youtube sorts from best to worst
+        const bestOption = available.includes(targetQuality) ? targetQuality : available[0]; // youtube sorts from best to worst
+
+        if (current === "unknown" || !current) {
+            setTimeout(SetVideoQuality, 500);
+            return;
+        }
 
         if (current === bestOption) {
-            console.log(`YouTube Auto Quality: Already at best available quality: ${QUALITY_MAP[current] || current}.`);
+            console.log(`YouTube Auto Quality: Already at desired/best available quality: ${QUALITY_MAP[current] || current}.`);
             return;
         }
 
@@ -93,5 +105,5 @@
     });
 
     observer.observe(document, { subtree: true, childList: true });
-    HandleNewVideoLoad();
+    window.dispatchEvent(new CustomEvent('InjectionReady'));
 })();

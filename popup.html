@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            width: 150px;
+            padding: 10px;
+            font-family: sans-serif;
+            background-color: #1e1e1e;
+            color: rgb(220, 220, 220);
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            background: #4a4a4a;
+            color: rgb(220, 220, 220);
+            border-radius: 5px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="quality">Default Quality:</label>
+    <select id="quality">
+        <option value="highres">4320p (8K)</option>
+        <option value="hd2160">2160p (4K)</option>
+        <option value="hd1440">1440p (2K)</option>
+        <option value="hd1080" selected>1080p</option>
+        <option value="hd720">720p</option>
+        <option value="large">480p</option>
+        <option value="medium">360p</option>
+        <option value="small">240p</option>
+        <option value="tiny">144p</option>
+    </select>
+    <script src="popup.js"></script>
+</body>
+
+</html>
