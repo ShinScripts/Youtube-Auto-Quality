@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Youtube Auto Quality",
+    "version": "1.0.0",
+    "description": "Sets YouTube quality automatically.",
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.youtube.com/*"
+            ],
+            "js": [
+                "contentScript.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "inject.js"
+            ],
+            "matches": [
+                "https://www.youtube.com/*"
+            ]
+        }
+    ]
+}
