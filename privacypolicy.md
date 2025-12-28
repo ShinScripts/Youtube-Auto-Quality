@@ -1,9 +1,9 @@
-# Privacy Policy for YT Auto Quality
+# Privacy Policy for Youtube Auto Quality
 
 **Last Updated:** December 28, 2025
 
 ## 1. Overview
-"YT Auto Quality" is a browser extension designed to help users automatically set their preferred video resolution on YouTube. We value your privacy and have designed this extension to operate with the minimum amount of data required.
+"Youtube Auto Quality" is a browser extension designed to help users automatically set their preferred video resolution on YouTube. We value your privacy and have designed this extension to operate with the minimum amount of data required.
 
 ## 2. Data Collection and Usage
 * **No Personal Data:** This extension does not collect, store, or transmit any personally identifiable information (PII) such as names, email addresses, or account credentials.
@@ -14,7 +14,7 @@
 ## 3. Permissions Justification
 To function correctly, the extension requires the following permissions:
 * **`storage`**: Required to save and retrieve your preferred video quality setting.
-* **Host Permissions (`youtube.com`/*)**: Required to detect when a video player is loaded and to programmatically adjust the quality using the YouTube Player API.
+* **Host Permissions (`youtube.com/*`)**: Required to detect when a video player is loaded and to programmatically adjust the quality using the YouTube Player API.
 
 ## 4. Third-Party Sharing
 * **No Data Selling:** We do not sell, trade, or share any user data with third parties.
