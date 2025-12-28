@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Youtube Auto Quality",
     "version": "1.0.1",
-    "description": "Sets YouTube quality automatically.",
+    "description": "Used to automatically set the quality of videos to a resolution of your choice.",
     "permissions": [
         "storage"
     ],
@@ -29,5 +29,8 @@
                 "https://www.youtube.com/*"
             ]
         }
-    ]
+    ],
+    "icons": {
+        "128": "logo.png"
+    }
 }
