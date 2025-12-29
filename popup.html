@@ -5,10 +5,16 @@
     <style>
         body {
             width: 150px;
-            padding: 10px;
             font-family: sans-serif;
             background-color: #1e1e1e;
             color: rgb(220, 220, 220);
+            padding: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         select {
@@ -24,22 +30,39 @@
             font-size: 12px;
             font-weight: bold;
         }
+
+        a {
+            text-decoration: none;
+            color: rgb(220, 220, 220);
+            opacity: 20%;
+            width: fit-content;
+        }
+
+        a:hover {
+            opacity: 60%;
+        }
     </style>
 </head>
 
 <body>
-    <label for="quality">Default Quality:</label>
-    <select id="quality">
-        <option value="highres">4320p (8K)</option>
-        <option value="hd2160">2160p (4K)</option>
-        <option value="hd1440">1440p (2K)</option>
-        <option value="hd1080" selected>1080p (default)</option>
-        <option value="hd720">720p</option>
-        <option value="large">480p</option>
-        <option value="medium">360p</option>
-        <option value="small">240p</option>
-        <option value="tiny">144p</option>
-    </select>
+    <div class="container">
+        <div>
+            <label for="quality">Preferred Quality:</label>
+            <select id="quality">
+                <option value="highres">4320p (8K)</option>
+                <option value="hd2160">2160p (4K)</option>
+                <option value="hd1440">1440p (2K)</option>
+                <option value="hd1080" selected>1080p (default)</option>
+                <option value="hd720">720p</option>
+                <option value="large">480p</option>
+                <option value="medium">360p</option>
+                <option value="small">240p</option>
+                <option value="tiny">144p</option>
+            </select>
+        </div>
+
+        <a href="https://github.com/ShinScripts/Youtube-Auto-Quality" target="_blank">Source code</a>
+    </div>
     <script src="popup.js"></script>
 </body>
 
