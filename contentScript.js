@@ -14,5 +14,5 @@
     }
 
     chrome.storage.onChanged.addListener(UpdateInjectedQuality);
-    window.addEventListener('InjectionReady', () => setTimeout(UpdateInjectedQuality, 1000)); // small delay when page loads
+    window.addEventListener('InjectionReady', UpdateInjectedQuality);
 })();

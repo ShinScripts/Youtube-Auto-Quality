@@ -23,9 +23,16 @@
         }
     });
 
-    function GetPlayer() {
+    function GetPlayer(attempts = 0) {
         const player = document.getElementById('movie_player');
-        return (player && typeof player.getPlaybackQuality === 'function') ? player : null;
+
+        if (player && typeof player.getPlaybackQuality === 'function') {
+            return player;
+        } else if (attempts < 10) {
+            setTimeout(() => GetPlayer(attempts + 1), 500);
+        } else {
+            console.log(`YouTube Auto Quality: GetPlayer timed out.`);
+        }
     }
 
     function ParseQuality(quality) {
@@ -104,5 +111,5 @@
     });
 
     observer.observe(document, { subtree: true, childList: true });
-    window.dispatchEvent(new CustomEvent('InjectionReady'));
+    document.addEventListener('DOMContentLoaded', () => window.dispatchEvent(new CustomEvent('InjectionReady')));
 })();
